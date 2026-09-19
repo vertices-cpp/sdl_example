@@ -46,11 +46,4 @@ add_subdirectory(examples/001_2d_vertex_rotation)
     add_subdirectory(examples/012_sine_matrix_wave)
     add_subdirectory(examples/013_sound_pitching_example)
     add_subdirectory(examples/014_sound_wave) 
-#[[
-if(EXAMPLE STREQUAL "all")
-    add_subdirectory(examples/001)
-    add_subdirectory(examples/002)
-    add_subdirectory(examples/003)
-else()
-    add_subdirectory(examples/${EXAMPLE})
-endif()]]
+ 
