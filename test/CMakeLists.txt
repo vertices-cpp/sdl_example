@@ -19,6 +19,9 @@ if(EXISTS "${CMAKE_SOURCE_DIR}/Resources")
             "${CMAKE_BINARY_DIR}/bin/$<CONFIG>/Resources"
         COMMENT "Mirror Resources -> $<CONFIG>"
         VERBATIM)
+
+    # ★ 挂到 Utils 分组
+    set_target_properties(SyncRes PROPERTIES FOLDER "Utils")
 endif()
 
 # ★ 公共头（独立项目，只列一次）
