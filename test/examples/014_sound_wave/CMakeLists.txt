@@ -93,4 +93,4 @@ if(MSVC)
                  FILES ${_srcs})
 endif()
 
-set_target_properties(${APP_NAME} PROPERTIES FOLDER "Examples")
+set_target_properties(${APP_NAME} PROPERTIES FOLDER "Test")
