@@ -61,7 +61,7 @@ set(FT_DISABLE_HVF      TRUE CACHE BOOL "" FORCE)
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 
 # 把 freetype 挂到 VS 里的 "third_party" 分组
-set(FREETYPE_FOLDER "third_party")
+set(FREETYPE_FOLDER "External")
 add_subdirectory(freetype)
 set_target_properties(freetype PROPERTIES FOLDER "${FREETYPE_FOLDER}")
 
@@ -120,4 +120,4 @@ if(MSVC)
                  FILES ${_srcs})
 endif()
 
-set_target_properties(${APP_NAME} PROPERTIES FOLDER "Examples")
+set_target_properties(${APP_NAME} PROPERTIES FOLDER "Test")
