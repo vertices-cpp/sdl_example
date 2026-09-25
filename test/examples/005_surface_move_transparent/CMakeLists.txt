@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.17)
 
 # ============================================================
 # ★ 唯一要改的地方：项目名
@@ -93,4 +93,4 @@ if(MSVC)
                  FILES ${_srcs})
 endif()
 
-set_target_properties(${APP_NAME} PROPERTIES FOLDER "Examples")
+set_target_properties(${APP_NAME} PROPERTIES FOLDER "Test")
