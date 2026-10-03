@@ -18,13 +18,13 @@
 
 ## 🔨 构建
 
-```bash
+bash
 # x64
 cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A x64
 
 # x86
 cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
-```
+
 
 打开 `proj.win32/sdl_example.sln`，右键任意项目 → **设为启动项目** → **F5**。
 
@@ -36,9 +36,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 顶点坐标的旋转 / 缩放 / 平移，手动矩阵计算。
 
-```
+
 ![001](screenshots/001.png)
-```
+
 
 ---
 
@@ -46,9 +46,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 射线与线段的交点计算、射线与矩形碰撞检测。
 
-```
+
 ![002](screenshots/002.png)
-```
+
 
 ---
 
@@ -56,9 +56,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 任意阶数的贝塞尔曲线采样与绘制（德卡斯特里奥 / 伯恩斯坦）。
 
-```
+
 ![003](screenshots/003.png)
-```
+
 
 ---
 
@@ -66,9 +66,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 按像素遍历生成图形，逐像素绘制。
 
-```
+
 ![004](screenshots/004.png)
-```
+
 
 ---
 
@@ -76,9 +76,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 `SDL_Surface` 层的移动与 alpha 混合。
 
-```
+
 ![005](screenshots/005.png)
-```
+
 
 ---
 
@@ -86,9 +86,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 `SDL_Renderer` 层的移动与混合模式对比。
 
-```
+
 ![006](screenshots/006.png)
-```
+
 
 ---
 
@@ -96,9 +96,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 重力、碰撞、反弹的物理模拟。
 
-```
+
 ![007](screenshots/007.png)
-```
+
 
 ---
 
@@ -106,9 +106,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 水波扩散算法的实时模拟。
 
-```
+
 ![008](screenshots/008.png)
-```
+
 
 ---
 
@@ -116,9 +116,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 仿 2DX `MotionStreak` 的拖尾效果，Catmull-Rom 加密 + Miter 法线。
 
-```
+
 ![009](screenshots/009.png)
-```
+
 
 ---
 
@@ -126,9 +126,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 相机跟随 + 拖尾的综合演示。
 
-```
+
 ![010](screenshots/010.png)
-```
+
 
 ---
 
@@ -136,9 +136,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 `Mat3` 矩阵与顶点变换的综合演示。
 
-```
+
 ![011](screenshots/011.png)
-```
+
 
 ---
 
@@ -146,9 +146,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 正弦波驱动顶点变形的网格动画。
 
-```
+
 ![012](screenshots/012.png)
-```
+
 
 ---
 
@@ -156,9 +156,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 `SDL_mixer` 播放音频时的实时变调。
 
-```
+
 ![013](screenshots/013.png)
-```
+
 
 ---
 
@@ -166,9 +166,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 读取音频数据并绘制波形。
 
-```
+
 ![014](screenshots/014.png)
-```
+
 
 ---
 
@@ -176,9 +176,9 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 FreeType + 位图字体 / SDF 字体渲染。
 
-```
+
 ![015](screenshots/015.png)
-```
+
 
 ---
 
@@ -186,15 +186,15 @@ FreeType + 位图字体 / SDF 字体渲染。
 
 SDL2 简易菜单 / UI 交互示例。
 
-```
+
 ![016](screenshots/016.png)
-```
+
 
 ---
 
 ## 📁 目录结构
 
-```
+
 sdl_example/
 ├── CMakeLists.txt                # 顶层构建
 ├── examples/                     # 16 个独立示例
@@ -221,7 +221,7 @@ sdl_example/
 │   ├── SDL2/                     # 预编译 SDL2 + image / mixer / ttf / net
 │   └── external/                 # zlib / tinyxml2 / minizip / freetype / edtaa3func
 └── proj.win32/                   # 生成物（gitignore）
-```
+
 
 ---
 
