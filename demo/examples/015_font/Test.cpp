@@ -5,6 +5,7 @@
 #include "OGTextFieldTTF.h"
 #include "OGCamera.h"
 #include "OGEventDispatcher.h"
+#include "OGFileUtils.h"
 
 #define PATH_RES
 
@@ -32,6 +33,14 @@ bool Test::init()
 	label->setMaxLineWidth(600);
 	addChild(label);
 
+	std::string fullPath = FileUtils::getInstance()->fullPathForFilename("015_font/11.fnt");
+	// fullPath = "D:/.../Resources/msyh.ttf"
+
+	// 反推资源根目录
+	std::string resRoot = fullPath.substr(0, fullPath.find_last_of("/\\") + 1);
+
+	FileUtils::getInstance()->renameFile(resRoot + "11.fnt", resRoot + "12.fnt");
+	FileUtils::getInstance()->removeFile(resRoot + "12.fnt");
 //	// 方式 1：带尺寸 + 对齐
 //	auto tf = TextFieldTTF::textFieldWithPlaceHolder(
 //		"请输入...",                    // 占位符
@@ -48,7 +57,7 @@ bool Test::init()
 //	tf->appendString("你好 my friend");
 
 	auto _defaultCamera = Camera::getInstance();
-	//_defaultCamera->setZoom(0.5f);   // 缩小一半
+	_defaultCamera->setZoom(0.5f);   // 缩小一半
 	_defaultCamera->setViewportSize(Size(300, 300));
 	_defaultCamera->setViewportPos(Vec2(100, 100));
 	_defaultCamera->setCenter(Vec2(300, 300));   // ← 世界原点 → 视口左上角

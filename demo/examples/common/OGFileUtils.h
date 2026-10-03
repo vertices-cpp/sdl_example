@@ -227,6 +227,8 @@ public:
 	FileUtils::Status getContents(const std::string & filename, ResizableBuffer * buffer) const;
 	bool isFileExist(const std::string & filename) const;
 	std::string getFileExtension(const std::string & filePath) const;
+	bool renameFile(const std::string & oldfullpath, const std::string & newfullpath) const;
+	bool removeFile(const std::string & filepath) const;
 	template <
 		typename T,
 		typename Enable = typename std::enable_if<

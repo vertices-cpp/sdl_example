@@ -270,6 +270,45 @@ std::string FileUtils::getFileExtension(const std::string& filePath) const
 
 	return fileExtension;
 }
+bool FileUtils::renameFile(const std::string& oldfullpath, const std::string& newfullpath) const
+{
+	OGASSERT(!oldfullpath.empty(), "Invalid path");
+	OGASSERT(!newfullpath.empty(), "Invalid path");
 
+
+	std::string oldPath = convertPathFormatToUnixStyle(oldfullpath);
+	std::string newPath = convertPathFormatToUnixStyle(newfullpath);
+	// 如果新路径已存在，先删掉
+	if (isFileExist(newPath))
+	{
+		if (std::remove(newPath.c_str()) != 0)
+		{
+			OGLOGERROR("Fail to remove existing file %s, errno=%d",
+				newPath.c_str(), errno);
+		}
+	}
+
+	if (std::rename(oldPath.c_str(), newPath.c_str()) == 0)
+		return true;
+
+	OGLOGERROR("Fail to rename file %s to %s, errno=%d",
+		oldPath.c_str(), newPath.c_str(), errno);
+	return false;
+}
+bool FileUtils::removeFile(const std::string& filepath) const
+{
+	OGASSERT(!filepath.empty(), "Invalid path");
+	std::string newPath = convertPathFormatToUnixStyle(filepath);
+	if (std::remove(newPath.c_str()) == 0)
+	{
+		return true;
+	}
+	else
+	{
+		OGLOGERROR("Fail to remove file %s, errno=%d",
+			newPath.c_str(), errno);
+		return false;
+	}
+}
 
 OG_END
