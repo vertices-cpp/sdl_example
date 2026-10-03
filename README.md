@@ -176,7 +176,7 @@ SDL2 简易菜单 / UI 交互示例。
 
 ## 📁 目录结构
 
-
+```
 sdl_example/
 ├── CMakeLists.txt                # 顶层构建
 ├── examples/                     # 16 个独立示例
@@ -203,9 +203,7 @@ sdl_example/
 │   ├── SDL2/                     # 预编译 SDL2 + image / mixer / ttf / net
 │   └── external/                 # zlib / tinyxml2 / minizip / freetype / edtaa3func
 └── proj.win32/                   # 生成物（gitignore）
-
-
----
+```
 
 ## 🧩 关键设计
 
