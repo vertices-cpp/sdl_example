@@ -138,59 +138,41 @@ cmake -S . -B proj.win32 -G "Visual Studio 17 2022" -A Win32
 
 
 ![011](screenshots/011.png)
-
-
----
-
+ 
 ### 012 · 正弦矩阵波
 
 正弦波驱动顶点变形的网格动画。
 
 
 ![012](screenshots/012.png)
-
-
----
-
+ 
 ### 013 · 音频变调
 
 `SDL_mixer` 播放音频时的实时变调。
 
 
 ![013](screenshots/013.png)
-
-
----
-
+ 
 ### 014 · 声波可视化
 
 读取音频数据并绘制波形。
 
 
 ![014](screenshots/014.png)
-
-
----
-
+ 
 ### 015 · 字体渲染
 
 FreeType + 位图字体 / SDF 字体渲染。
 
 
 ![015](screenshots/015.png)
-
-
----
-
+ 
 ### 016 · 菜单
 
 SDL2 简易菜单 / UI 交互示例。
-
-
+ 
 ![016](screenshots/016.png)
-
-
----
+ 
 
 ## 📁 目录结构
 
