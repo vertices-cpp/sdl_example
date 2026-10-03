@@ -5,7 +5,7 @@ USING_OG;
 
 int main(int, char **)
 {
-	 AppTest* appTest = new AppTest();
+	static AppTest* appTest = new AppTest();
 	appTest->init();
 	delete appTest;
 

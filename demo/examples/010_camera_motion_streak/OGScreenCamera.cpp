@@ -1,4 +1,4 @@
-﻿#include "OGCamera.h"
+﻿#include "OGScreenCamera.h"
 #include "Mat3.h"
 #include "SDLView.h"
 

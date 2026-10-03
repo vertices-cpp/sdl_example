@@ -236,6 +236,26 @@ int Camera::getRenderOrder() const
 	result += _depth;
 	return result;
 }
+void Camera::DrawScreen()
+{
+	Rect screenRect =  getScreenRect();
 
+	SDL_Renderer* sdlRen = SDLView::getInstance()->getRender();
+	SDL_Rect r1 = {
+		(int)screenRect.origin.x,
+		(int)screenRect.origin.y,
+		(int)screenRect.size.width,
+		(int)screenRect.size.height
+	};
+	SDL_Rect r2 = {
+		(int)screenRect.origin.x -  getMarginX(),
+		(int)screenRect.origin.y -  getMarginY(),
+		(int)screenRect.size.width +  getMarginX() * 2,
+		(int)screenRect.size.height +  getMarginY() * 2
+	};
+	SDL_SetRenderDrawColor(sdlRen, 255, 0, 0, 255);
+	SDL_RenderDrawRect(sdlRen, &r1);
+	SDL_RenderDrawRect(sdlRen, &r2);
+}
 
 OG_END

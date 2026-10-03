@@ -162,6 +162,8 @@ public:
 
 	int getRenderOrder() const;
 
+	void DrawScreen();
+
 	public:
 	 void  setShowDebug(bool v) {
 // 			_showDebug = v;

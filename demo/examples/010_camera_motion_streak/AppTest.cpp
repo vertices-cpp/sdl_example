@@ -7,13 +7,14 @@
 #include "Mat3.h"
 
 #include "SDLView.h"
-#include "OGCamera.h"
+#include "OGScreenCamera.h"
 #include "MotionStreak.h" 
 
 
 OG_BEGIN
  
 void AppTest::init() {
+
 	SDLView *e = SDLView::getInstance();
 	e->init(0, 0, 1000, 1000);
 

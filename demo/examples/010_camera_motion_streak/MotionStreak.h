@@ -6,7 +6,7 @@
 
 #include "ogTypes.h" 
 #include "OGTexture2D.h"
-#include "OGCamera.h"
+#include "OGScreenCamera.h"
 #include <vector> 
 
 OG_BEGIN
