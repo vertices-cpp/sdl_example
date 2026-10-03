@@ -11,6 +11,7 @@
 #include <string>
 #include <sstream>
 #include <cmath>
+#define PATH_RES
 #include "path_head.h"
 using namespace std;
 

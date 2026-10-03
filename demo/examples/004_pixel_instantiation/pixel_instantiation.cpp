@@ -12,6 +12,7 @@
 #include <cmath>
 #include <string>
 #include <algorithm>
+#define PATH_RES
 #include "path_head.h"
 using namespace std;
 

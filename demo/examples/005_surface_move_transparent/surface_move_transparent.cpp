@@ -1,6 +1,8 @@
 ﻿#include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_syswm.h>
+
+#define PATH_RES
 #include "path_head.h"
 
 #include <vector>
