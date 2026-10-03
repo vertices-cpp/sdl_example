@@ -65,7 +65,7 @@ bool SDLView::event()
 			float y = e.tfinger.y *logicSize.height;
 			printf("%d,%d", x, y);
 
-			auto  f = [&]() {
+			auto  getUnUsedIndex = [&]() {
 				int i;
 				int temp = g_indexBitsUsed;
 
@@ -81,7 +81,16 @@ bool SDLView::event()
 				// all bits are used
 				return -1;
 			};
+			auto  removeUsedIndexBit = [&](int index) {
+				if (index < 0 || index >=15)
+				{
+					return;
+				}
 
+				unsigned int temp = 1 << index;
+				temp = ~temp;
+				g_indexBitsUsed &= temp;
+			};
 			switch (e.type)
 			{
 			case SDL_FINGERDOWN:
@@ -95,7 +104,7 @@ bool SDLView::event()
 				// it is a new touch
 				if (iter == g_touchIdReorderMap.end())
 				{
-					unusedIndex =  f();
+					unusedIndex = getUnUsedIndex();
 
 					// The touches is more than MAX_TOUCHES ?
 					if (unusedIndex == -1) {
@@ -144,7 +153,7 @@ bool SDLView::event()
 					touchEvent._touches.push_back(touch);
 
 					 g_touches[iter->second] = nullptr;
- 
+					 removeUsedIndexBit(iter->second);
 
 					g_touchIdReorderMap.erase(id);
 				}
