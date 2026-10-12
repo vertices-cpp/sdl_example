@@ -208,7 +208,7 @@ sdl_example/
 ├── Resources/                    # 共享资源
 ├── screenshots/                  # README 截图
 ├── third_party/
-│   ├── SDL2/                     # 预编译 SDL2 + image / mixer / ttf / net
+│   ├── SDL2/                     # 预编译 SDL2 
 │   └── external/                 # zlib / tinyxml2 / minizip / freetype / edtaa3func
 └── proj.win32/                   # 生成物（gitignore）
 ```
