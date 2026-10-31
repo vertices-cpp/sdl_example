@@ -1,0 +1,182 @@
+﻿
+
+#include "ui/UITextAtlas.h"
+#include "2d/OGLabel.h"
+#include "editor-support/ui-extension/UIExtension.h"
+
+OG_BEGIN
+
+namespace ui {
+    
+static const int LABELATLAS_RENDERER_Z = (-1);
+    
+IMPLEMENT_CLASS_GUI_INFO(TextAtlas)
+
+TextAtlas::TextAtlas():
+_labelAtlasRenderer(nullptr),
+_stringValue(""),
+_charMapFileName(""),
+_itemWidth(0),
+_itemHeight(0),
+_startCharMap(""),
+_labelAtlasRendererAdaptDirty(true)
+{
+	_name = "TextAtlas";
+}
+
+TextAtlas::~TextAtlas()
+{
+    
+}
+
+TextAtlas* TextAtlas::create()
+{
+    TextAtlas* widget = new (std::nothrow) TextAtlas();
+    if (widget && widget->init())
+    {
+        widget->autorelease();
+        return widget;
+    }
+    OG_SAFE_DELETE(widget);
+    return nullptr;
+}
+
+void TextAtlas::initRenderer()
+{
+    _labelAtlasRenderer = Label::create();
+    _labelAtlasRenderer->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    addProtectedChild(_labelAtlasRenderer, LABELATLAS_RENDERER_Z, -1);
+}
+    
+TextAtlas* TextAtlas::create(const std::string &stringValue,
+                             const std::string &charMapFile,
+                             int itemWidth,
+                             int itemHeight,
+                             const std::string &startCharMap)
+{
+    TextAtlas* widget = new (std::nothrow) TextAtlas();
+    if (widget && widget->init())
+    {
+        widget->autorelease();
+        widget->setProperty(stringValue, charMapFile, itemWidth, itemHeight, startCharMap);
+        return widget;
+    }
+    OG_SAFE_DELETE(widget);
+    return nullptr;
+}
+
+void TextAtlas::setProperty(const std::string& stringValue, const std::string& charMapFile, int itemWidth, int itemHeight, const std::string& startCharMap)
+{
+    _stringValue = stringValue;
+    _charMapFileName = charMapFile;
+    _itemWidth = itemWidth;
+    _itemHeight = itemHeight;
+    _startCharMap = startCharMap;
+    
+    _labelAtlasRenderer->setCharMap(_charMapFileName, _itemWidth, _itemHeight, (int)(_startCharMap[0]));
+    _labelAtlasRenderer->setString(stringValue);
+    
+    updateContentSizeWithTextureSize(_labelAtlasRenderer->getContentSize());
+    _labelAtlasRendererAdaptDirty = true;
+//    OGLOG("cs w %f, h %f", _contentSize.width, _contentSize.height);
+}
+
+void TextAtlas::setString(const std::string& value)
+{
+    if (value == _labelAtlasRenderer->getString())
+    {
+        return;
+    }
+    _stringValue = value;
+    _labelAtlasRenderer->setString(value);
+    updateContentSizeWithTextureSize(_labelAtlasRenderer->getContentSize());
+    _labelAtlasRendererAdaptDirty = true;
+//    OGLOG("cssss w %f, h %f", _contentSize.width, _contentSize.height);
+}
+
+const std::string& TextAtlas::getString() const
+{
+    return _labelAtlasRenderer->getString();
+}
+    
+ssize_t TextAtlas::getStringLength()const
+{
+    return _labelAtlasRenderer->getStringLength();
+}
+
+void TextAtlas::onSizeChanged()
+{
+    Widget::onSizeChanged();
+    _labelAtlasRendererAdaptDirty = true;
+}
+    
+void TextAtlas::adaptRenderers()
+{
+    if (_labelAtlasRendererAdaptDirty)
+    {
+        labelAtlasScaleChangedWithSize();
+        _labelAtlasRendererAdaptDirty = false;
+    }
+}
+
+Size TextAtlas::getVirtualRendererSize() const
+{
+    return _labelAtlasRenderer->getContentSize();
+}
+
+Node* TextAtlas::getVirtualRenderer()
+{
+    return _labelAtlasRenderer;
+}
+
+void TextAtlas::labelAtlasScaleChangedWithSize()
+{
+    if (_ignoreSize)
+    {
+        _labelAtlasRenderer->setScale(1.0f);
+    }
+    else
+    {
+        Size textureSize = _labelAtlasRenderer->getContentSize();
+        if (textureSize.width <= 0.0f || textureSize.height <= 0.0f)
+        {
+            _labelAtlasRenderer->setScale(1.0f);
+            return;
+        }
+        float scaleX = _contentSize.width / textureSize.width;
+        float scaleY = _contentSize.height / textureSize.height;
+        _labelAtlasRenderer->setScaleX(scaleX);
+        _labelAtlasRenderer->setScaleY(scaleY);
+    }
+    _labelAtlasRenderer->setPosition(_contentSize.width / 2.0f, _contentSize.height / 2.0f);
+}
+
+std::string TextAtlas::getDescription() const
+{
+    return "TextAtlas";
+}
+
+Widget* TextAtlas::createCloneInstance()
+{
+    return TextAtlas::create();
+}
+
+void TextAtlas::copySpecialProperties(Widget *widget)
+{
+    TextAtlas* labelAtlas = dynamic_cast<TextAtlas*>(widget);
+    if (labelAtlas)
+    {
+        setProperty(labelAtlas->_stringValue, labelAtlas->_charMapFileName, labelAtlas->_itemWidth, labelAtlas->_itemHeight, labelAtlas->_startCharMap);
+    }
+}
+    
+ResourceData TextAtlas::getRenderFile()
+{
+    ResourceData rData;
+    rData.type = 0;
+    rData.file = _charMapFileName;
+    return rData;
+}
+
+}
+OG_END

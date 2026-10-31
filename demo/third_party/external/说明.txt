@@ -1,0 +1,21 @@
+以下可以在LINUX上操作完复制出来.源内就有CMAKE文件了
+git clone https://github.com/openssl/openssl.git openssl-OpenSSL_1_1_1s
+cd openssl-OpenSSL_1_1_1s
+git checkout OpenSSL_1_1_1s
+git clone https://github.com/devolutions/openssl-cmake.git
+git -C openssl-cmake checkout-index -a -f --prefix=./
+
+
+//加入项目
+
+openssl-OpenSSL_1_1_1s\CMakeLists.txt
+openssl-OpenSSL_1_1_1s\crypto\CMakeLists.txt
+openssl-OpenSSL_1_1_1s\ssl\CMakeLists.txt
+openssl-OpenSSL_1_1_1s\apps\CMakeLists.txt
+
+${CMAKE_SOURCE_DIR}， 改成 ${OPENSSL_SRC_DIR}。
+
+curl cmake部分
+注释这个 find_package(OpenSSL REQUIRED)
+OpenSSL::SSL OpenSSL::Crypto
+替换为实际生成的名字ssl crypto
