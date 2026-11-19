@@ -1,0 +1,163 @@
+﻿#ifndef _og_CONFIG_H_
+#define  _og_CONFIG_H_
+
+//#include "platform/OGPlatformConfig.h"
+ 
+#ifndef OG_ENABLE_STACKABLE_ACTIONS
+#define OG_ENABLE_STACKABLE_ACTIONS 1
+#endif 
+#ifndef OG_ENABLE_GL_STATE_CACHE
+#define OG_ENABLE_GL_STATE_CACHE 1
+#endif
+ 
+#ifndef OG_FIX_ARTIFACTS_BY_STRECHING_TEXEL
+#define OG_FIX_ARTIFACTS_BY_STRECHING_TEXEL 0
+#endif 
+#ifndef OG_DIRECTOR_STATS_INTERVAL
+#define OG_DIRECTOR_STATS_INTERVAL (0.5f)
+#endif 
+#ifndef OG_DIRECTOR_FPS_POSITION
+#define OG_DIRECTOR_FPS_POSITION Vec2(0,0)
+#endif 
+#ifndef OG_DIRECTOR_DISPATCH_FAST_EVENTS
+ #define OG_DIRECTOR_DISPATCH_FAST_EVENTS 0
+#endif
+ 
+#ifndef OG_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD
+#define OG_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD 1
+#endif
+ 
+#ifndef OG_NODE_RENDER_SUBPIXEL
+#define OG_NODE_RENDER_SUBPIXEL 1
+#endif
+ 
+#ifndef OG_SPRITEBATCHNODE_RENDER_SUBPIXEL
+#define OG_SPRITEBATCHNODE_RENDER_SUBPIXEL    1
+#endif
+ 
+#ifndef OG_TEXTURE_ATLAS_USE_VAO
+#define OG_TEXTURE_ATLAS_USE_VAO 1
+#endif
+ 
+#ifndef OG_USE_LA88_LABELS
+#define OG_USE_LA88_LABELS 1
+#endif
+ 
+#ifndef OG_SPRITE_DEBUG_DRAW
+#define OG_SPRITE_DEBUG_DRAW 0
+#endif
+ 
+#ifndef OG_LABEL_DEBUG_DRAW
+#define OG_LABEL_DEBUG_DRAW 0
+#endif
+ 
+#ifndef OG_SPRITEBATCHNODE_DEBUG_DRAW
+#define OG_SPRITEBATCHNODE_DEBUG_DRAW 0
+#endif
+ 
+#ifndef OG_LABELBMFONT_DEBUG_DRAW
+#define OG_LABELBMFONT_DEBUG_DRAW 0
+#endif
+ 
+#ifndef OG_LABELATLAS_DEBUG_DRAW
+#define OG_LABELATLAS_DEBUG_DRAW 0
+#endif
+ 
+#ifndef OG_NODE_DEBUG_VERIFY_EVENT_LISTENERS
+#define OG_NODE_DEBUG_VERIFY_EVENT_LISTENERS 0
+#endif
+ 
+#ifndef OG_ENABLE_PROFILERS
+#define OG_ENABLE_PROFILERS 0
+#endif
+
+/** Enable Lua engine debug log. */
+#ifndef OG_LUA_ENGINE_DEBUG
+#define OG_LUA_ENGINE_DEBUG 0
+#endif
+
+/** Use physics integration API. */
+#ifndef OG_USE_PHYSICS
+#define OG_USE_PHYSICS 1
+#endif
+
+#if (OG_USE_PHYSICS)
+/** Use chipmunk physics 2d engine. */
+#ifndef OG_ENABLE_CHIPMUNK_INTEGRATION
+#define OG_ENABLE_CHIPMUNK_INTEGRATION 1
+#endif
+
+/** or use box2d physics 2d engine. */
+#ifndef OG_ENABLE_BOX2D_INTEGRATION
+#define OG_ENABLE_BOX2D_INTEGRATION 0
+#endif
+#endif // OG_USE_PHYSICS
+
+/** Use 3d physics integration API. */
+#ifndef OG_USE_3D_PHYSICS
+#if (OG_TARGET_PLATFORM == OG_PLATFORM_IOS || OG_TARGET_PLATFORM == OG_PLATFORM_MAC || OG_TARGET_PLATFORM == OG_PLATFORM_WIN32 || OG_TARGET_PLATFORM == OG_PLATFORM_ANDROID || OG_TARGET_PLATFORM == OG_PLATFORM_LINUX)
+#define OG_USE_3D_PHYSICS 1
+#endif
+#endif
+
+#if (OG_USE_3D_PHYSICS)
+/** Use bullet physics engine. */
+#ifndef OG_ENABLE_BULLET_INTEGRATION
+#define OG_ENABLE_BULLET_INTEGRATION 1
+#endif
+#endif
+
+/** Use 3D navigation API */
+#ifndef OG_USE_NAVMESH
+#define OG_USE_NAVMESH 1
+#endif
+
+/** Use culling or not. */
+#ifndef OG_USE_CULLING
+#define OG_USE_CULLING 1
+#endif
+ 
+#ifndef OG_USE_PNG
+#define OG_USE_PNG  1
+#endif // OG_USE_PNG
+ 
+#ifndef OG_USE_JPEG
+#define OG_USE_JPEG  1
+#endif // OG_USE_JPEG
+ 
+#ifndef OG_USE_WEBP
+#define OG_USE_WEBP  1
+#endif // OG_USE_WEBP
+
+/** Enable Script binding. */
+#ifndef OG_ENABLE_SCRIPT_BINDING
+#define OG_ENABLE_SCRIPT_BINDING 1
+#endif
+ 
+#ifdef OG_ENABLE_SCRIPT_BINDING
+  #ifndef OG_ENABLE_GC_FOR_NATIVE_OBJECTS
+  #define OG_ENABLE_GC_FOR_NATIVE_OBJECTS 0
+  #endif
+#endif
+ 
+#ifndef OG_CONSTRUCTOR_ACCESS
+  #ifdef OG_ENABLE_SCRIPT_BINDING
+    #define OG_CONSTRUCTOR_ACCESS public
+  #else
+    #define OG_CONSTRUCTOR_ACCESS protected
+  #endif
+#endif
+
+#ifndef OG_FILEUTILS_APPLE_ENABLE_OBJC
+#define OG_FILEUTILS_APPLE_ENABLE_OBJC  1
+#endif
+ 
+#ifndef OG_ENABLE_PREMULTIPLIED_ALPHA
+# define OG_ENABLE_PREMULTIPLIED_ALPHA 1
+#endif
+ 
+#ifndef OG_STRIP_FPS
+#define OG_STRIP_FPS 0
+#endif
+
+#endif
