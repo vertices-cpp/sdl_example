@@ -111,7 +111,7 @@ OG_DEPRECATED_ATTRIBUTE static __TYPE__* node() \
 #else
 #define OG_BEGIN 
 #define OG_END 
-#define USING_NS_OG 
+#define USING_OG 
 #define OG
 #endif 
 
